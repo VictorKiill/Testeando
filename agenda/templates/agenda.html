@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block head %}
+	<script>
+		var eventos = {{ eventosList|safe }};
+	</script>
+	<script src="{% static 'js/agenda2.js' %}" type="text/javascript"></script>
+    <link href="{% static 'css/agenda2.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block main %}
+
+
+    <div class="m-sm-5">
+        <div class="row m-1">
+            <div class="col-12 mt-1">
+                <div class="box">
+                    <header>
+                        <h5></h5>
+                    </header>
+                    <div id="calendar_content" class="body">
+                        <div id="divCal" class="rounded"></div>
+                        <div class="row p-2">
+                            <button id="btnPrevv" class="shadow-sm offset-1 col-3 btn btn-light" style="color: #59CAB8" type="button">Prev</button>
+                            <button id="btnNextt" class="shadow-sm offset-4 col-3 btn text-white" style="background: #59CAB8" type="button">Próx</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!-- Modal -->
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Eventos do dia</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Voltar</button>
+              <a href="{% url 'entre_create' %}" class="btn btn-primary mr-5">Novo</a>
+              <a href="{% url 'orcamento_create' %}" class="ml-5 btn btn-info text-white">Orçamento</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+	<!-- Event Modal -->
+
+	<div class="modal fade" id="testModalEvent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Modal Title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            123
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,215 @@
+{% load static %}
+<!doctype html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>SMB</title>
+        <link rel="icon" type="image/png" href="{% static 'media/icon.png' %}" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <!--Icones-->
+        <link rel="stylesheet" href="{% static 'icons/css/coreui-icons.min.css' %}">
+        <link rel="stylesheet" href="{% static 'icons/flag-icon-css/css/flag-icon.min.css' %}">
+        <link rel="stylesheet" href="{% static 'icons/font-awesome/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'icons/simple-line-icons/css/simple-line-icons.css' %}">
+
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="{% static 'css/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'vendors/pace-progress/css/pace.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/auto.css' %}">
+        <link rel="stylesheet" href="{% static 'css/agenda2.css' %}">
+
+        <link rel="stylesheet" href="{% static 'css/agenda-default.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fullcalendar.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/fullcalendar.print.min.css' %}"  media='print' />
+        <script src="{% static 'js/agenda2.js' %}"></script>
+        {% block head %}
+
+        {% endblock %}
+
+
+    </head>
+    <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show" style="background-color: #F5F5F5">
+        <header class="app-header navbar">
+            <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img class="navbar-brand-full" src="{% static 'media/logo menor.png' %}" width="100" height="50" alt="Logo Conecta">
+                    <img class="navbar-brand-minimized" src="{% static 'media/logomedio.png' %}" width="50" height="45" alt="Logo Conecta">
+                </a>
+            <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <img class="img-avatar" src="{% static 'media/icon.png' %}" alt="Usuario">
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-header text-center">
+                            <strong>Ajustes</strong>
+                        </div>
+                        <a class="dropdown-item" href="{% url 'perfil_list' %}">
+                            <i class="fa fa-wrench"></i> Perfis </a>
+                        <a class="dropdown-item" href="{% url 'usuario_list' %}">
+                            <i class="fa fa-wrench"></i> Usuários </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout' %}">
+                            <i class="fa fa-lock"></i> Sair</a>
+                    </div>
+                </li>
+            </ul>
+        </header>
+        <div class="app-body">
+            <div class="sidebar">
+                <nav class="sidebar-nav">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">
+                                <i class="nav-icon icon-speedometer"></i> Visão Geral
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'agenda' %}">
+                                <i class="nav-icon icon-drop"></i> Agenda</a>
+                        </li>
+                        <li class="nav-item nav-dropdown">
+                            <a class="nav-link" href="{% url 'cadastro' %}">
+                                <i class="nav-icon icon-puzzle"></i> Cadastro </a>
+                            <ul class="nav-dropdown-items">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'cliente_list' %}">
+                                        <i class="nav-icon"></i> Clientes </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'cliente_list' %}">
+                                        <i class="nav-icon"></i> Insumos </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'cliente_list' %}">
+                                        <i class="nav-icon"></i> Salas </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item nav-dropdown">
+                            <a class="nav-link nav-dropdown-toggle" href=#>
+                                <i class="nav-icon icon-cursor"></i> Controle </a>
+                            <ul class="nav-dropdown-items">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'pedido' %}">
+                                        <i class="nav-icon"></i> Pedidos </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'pedido' %}">
+                                        <i class="nav-icon"></i> Orçamentos </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="charts.html">
+                                <i class="nav-icon icon-pie-chart"></i> Financeiro</a>
+                        </li>
+                        <li class="nav-item nav-dropdown">
+                            <a class="nav-link nav-dropdown-toggle" href=#>
+                                <i class="nav-icon icon-cursor"></i> Relatórios </a>
+                            <ul class="nav-dropdown-items">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'pedido' %}">
+                                        <i class="nav-icon"></i> Clientes </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'pedido' %}">
+                                        <i class="nav-icon"></i> Contratos </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'pedido' %}">
+                                        <i class="nav-icon"></i> Orçamentos </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item mt-auto">
+                            <a class="nav-link nav-link-danger" target="_top">
+                                <i class="nav-icon icon-layers"></i>
+                                <strong>Suporte</strong>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+            </div>
+            <main class="main">
+                {% block main %}
+
+                {% endblock %}
+            </main>
+            <aside></aside>
+        </div>
+    <footer class="app-footer">
+        <div>
+            <a href=""></a>
+            <span></span>
+        </div>
+        <div class="ml-auto">
+            <span></span>
+            <a href=""></a>
+        </div>
+    </footer>
+
+    <scriot src="{% static 'js/jquery-3.2.1.min.js' %}"></scriot>
+    <scriot src="{% static 'js/bootstrap.min.js' %}"></scriot>
+    <script src="{% static 'lib/jquery/jquery.js' %}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.5/fullcalendar.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.18.4/js/jquery.tablesorter.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.selection.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/flot/0.8.3/jquery.flot.resize.min.js"></script>
+
+    <!--Bootstrap -->
+    <script src="{% static 'lib/bootstrap/js/bootstrap.js' %}"></script>
+    <!-- MetisMenu -->
+    <script src="{% static 'lib/metismenu/metisMenu.js'  %}"></script>
+    <!-- onoffcanvas -->
+    <script src="{% static 'lib/onoffcanvas/onoffcanvas.js' %}"></script>
+    <!-- Screenfull -->
+    <script src="{% static 'lib/screenfull/screenfull.js' %}"></script>
+    <!-- Metis core scripts -->
+    <script src="{% static 'js/core.js' %}"></script>
+    <!-- Metis demo scripts -->
+    <script src="{% static 'js/app.js' %}"></script>
+            <script>
+                $(function() {
+                  Metis.dashboard();
+                });
+            </script>
+    <script src="{% static 'js/style-switcher.js' %}"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script src="{% static 'js/moment.min.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/fullcalendar.min.js' %}"></script>
+
+    <script src="{% static 'js/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'js/popper.js/dist/umd/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/pace-progress/pace.min.js' %}"></script>
+    <script src="{% static 'js/perfect-scrollbar/dist/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'js/core/dist/js/coreui.min.js' %}"></script>
+    <script src="{% static 'js/chart.js/dist/Chart.min.js' %}"></script>
+    <script src="{% static 'js/core-plugin-chartjs-custom-tooltips/dist/js/custom-tooltips.min.js' %}"></script>
+    <script src="{% static 'js/js/main.js' %}"></script>
+
+    </body>
+</html>

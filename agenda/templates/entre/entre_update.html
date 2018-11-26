@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% load static %}
+{% block main %}
+
+    <section class="container mt-5">
+
+        <div class="container mb-5">
+            <div class="rounded border shadow p-4 offset-md-3 col-md-5 bg-white">
+                <h3> Alterar Evento </h3>
+                <form class="" action="" method="POST">
+                    {% csrf_token %}
+                    {{ form|bootstrap }}
+                    <button class="btn btn-success" type="submit">Salvar</button>
+                </form>
+            </div>
+            <a class="btn btn-outline-secondary mt-3 offset-md-7" href="{% url 'entre_list' %}">Voltar</a>
+        </div>
+
+    </section>
+
+
+{% endblock %}
